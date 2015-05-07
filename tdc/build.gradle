@@ -1,0 +1,63 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+  }
+}
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+def AAVersion = '3.3'
+
+dependencies {
+  compile 'com.android.support:appcompat-v7:21.0.0'
+  apt "org.androidannotations:androidannotations:$AAVersion"
+  compile "org.androidannotations:androidannotations:$AAVersion"
+}
+
+apt {
+  arguments {
+    androidManifestFile variant.outputs[0].processResources.manifestFile
+    resourcePackageName 'com.github.pierry.tdc'
+  }
+}
+
+android {
+  compileSdkVersion 21
+  buildToolsVersion '21.1.2'
+
+  defaultConfig {
+    minSdkVersion 11
+    targetSdkVersion 21
+  }
+
+  sourceSets {
+    main {
+      manifest.srcFile 'src/main/AndroidManifest.xml'
+      java.srcDirs = ['src/main/java', 'build/generated/source/apt/${variant.dirName}']
+      resources.srcDirs = ['src/main/res']
+      res.srcDirs = ['src/main/res']
+      assets.srcDirs = ['assets']
+    }
+  }
+
+  packagingOptions {
+    exclude 'META-INF/DEPENDENCIES.txt'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/NOTICE.txt'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/notice.txt'
+    exclude 'META-INF/license.txt'
+    exclude 'META-INF/dependencies.txt'
+    exclude 'META-INF/LGPL2.1'
+  }
+}
