@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
@@ -22,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
   @ViewById TextView tvProgresso;
   @ViewById Button btnTitulo;
   @ViewById Button btnProgresso;
+  @ViewById MaterialEditText etExemplo;
 
   private boolean alterado = true;
   private static final String TITULO_PADRAO = "Titulo Padrão";
@@ -63,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
     tvProgresso.setText(String.valueOf(valor) + "%");
   }
 
-  // Click do menu settings
+  // Click do m enu settings
   @OptionsItem(R.id.action_settings) void btnActionSettings() {
     Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show();
   }
