@@ -20,6 +20,7 @@ dependencies {
   compile 'com.android.support:appcompat-v7:21.0.0'
   apt "org.androidannotations:androidannotations:$AAVersion"
   compile "org.androidannotations:androidannotations:$AAVersion"
+  // Library para fazer os EditText com FloatingLabel
   compile 'com.rengwuxian.materialedittext:library:2.1.3'
 }
 
