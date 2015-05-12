@@ -1,4 +1,4 @@
-TDC-Android-2015
+TDC 2015 Florianópolis - Trilha Android
 ===================
 Exemplo de utilização básica do framework Android Annotations.
 Material extra da apresentação.
